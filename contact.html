@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mercy Flow — Contact</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/mercy-flow-fav.png">
+  <link rel="apple-touch-icon" href="images/mercy-flow-fav.png">
+</head>
+<body class="contact">
+  <header class="site-header">
+    <div class="wrap">
+      <div class="site-brand">
+        <a href="index.html" class="site-home" aria-label="Home">
+          <img src="images/mercy-flow-fav.png" alt="Mercy Flow logo" class="site-logo">
+        </a>
+            <h1 class="site-title"><a href="index.html">Mercy Flow</a></h1>
+      </div>
+      <button class="mobile-nav-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Open navigation">
+        <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <nav id="main-navigation" class="main-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">What We Believe</a>
+        <a href="what-we-do.html">What We Do</a>
+        <a href="gospel.html">The Gospel</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Questions, Comments, or Just Want to Connect?</h2>
+      <p class="about-intro">We’d love to hear from you. Whether you have a question about the ministry, want to know more about what we do, or simply feel led to reach out—this is the place. Fill out the form below, and someone from our team will get back to you as soon as possible.</p>
+      <p class="about-intro">We’re here to serve, encourage, and connect—because the body of Christ is stronger together.</p>
+
+      <div class="form-tabs" role="tablist" aria-label="Select a form">
+        <div class="form-tab"><button data-id="general" aria-pressed="false">Got a question?</button></div>
+        <div class="form-tab"><button data-id="prayer" aria-pressed="false">Prayer Request</button></div>
+        <div class="form-tab"><button data-id="testimony" aria-pressed="false">Share a Testimony</button></div>
+        <div class="form-tab"><button data-id="bible" aria-pressed="false">Request Free Bible</button></div>
+      </div>
+
+      <div class="form-embed" aria-live="polite">
+        <div class="form-title" id="form-title">Loading form…</div>
+        <iframe id="gform" src="" title="Contact form" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="images/mercy-flow-fav.png" alt="Mercy Flow logo" class="footer-logo">
+        <div class="footer-verse">
+          <strong>Mark 16</strong>
+          <p>15 And then he told them, “Go into all the world and preach the Good News to everyone. 16 Anyone who believes and is baptized will be saved.</p>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">What We Believe</a>
+        <a href="what-we-do.html">What We Do</a>
+        <a href="gospel.html">The Gospel</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-meta">© <span id="year"></span> Mercy Flow</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    (function(){
+      var btn = document.querySelector('.mobile-nav-toggle');
+      if(!btn) return;
+      var nav = document.getElementById(btn.getAttribute('aria-controls'));
+      var hamburgerSVG = '<svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
+      var closeSVG = '<svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+      function setButtonState(open){
+        btn.setAttribute('aria-expanded', open);
+        btn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        btn.classList.toggle('open', !!open);
+        btn.innerHTML = open ? closeSVG : hamburgerSVG;
+      }
+
+      // initialize (ensure correct icon)
+      setButtonState(false);
+
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = nav.classList.toggle('open');
+        setButtonState(open);
+      });
+
+      // Close when clicking outside the nav or toggle
+      document.addEventListener('click', function(e){
+        var isClickInsideNav = nav.contains(e.target);
+        var isClickOnBtn = btn.contains(e.target);
+        if(!isClickInsideNav && !isClickOnBtn && nav.classList.contains('open')){
+          nav.classList.remove('open');
+          setButtonState(false);
+        }
+      });
+
+      // Close when selecting a link inside the mobile nav
+      nav.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          if(nav.classList.contains('open')){
+            nav.classList.remove('open');
+            setButtonState(false);
+          }
+        });
+      });
+
+      // If viewport resizes to desktop, ensure menu closed
+      window.addEventListener('resize', function(){
+        if(window.innerWidth > 768 && nav.classList.contains('open')){
+          nav.classList.remove('open');
+          setButtonState(false);
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      var path = location.pathname.split('/').pop() || 'index.html';
+      var links = document.querySelectorAll('.main-nav a, .footer-nav a');
+      links.forEach(function(a){
+        var href = a.getAttribute('href') || '';
+        var hrefPath = href.split('/').pop();
+        if(hrefPath === path || (hrefPath === '' && (path === '' || path === 'index.html'))){
+          a.classList.add('active');
+          a.setAttribute('aria-current','page');
+        } else {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      // Map request ids to Google Form embed URLs (replace the placeholders with your form embed URLs)
+      var formMap = {
+        bible: "https://docs.google.com/forms/d/e/1FAIpQLSfNUSHJGlRefRQwpauIARzl7-ZGx3vgOkdZUznUh_27UdkmLw/viewform?embedded=true",
+        prayer: "https://docs.google.com/forms/d/e/1FAIpQLSeeKYUuog_D5R3m-w9MhAfBKJJhsus4XRpxUoOfxmpeHlY2Zg/viewform?embedded=true",
+        events: "https://docs.google.com/forms/d/e/1FAIpQLSdJ2d8GzdcV_4FZjV4cOAmGSMwyKNMtW2pYnbH9TwPd969zPQ/viewform?embedded=true",
+        testimony: "https://docs.google.com/forms/d/e/1FAIpQLSf_q-gsARI9rvCf2H8ojE9n9OG7W1hKC3vtmybjehNhMjZnyg/viewform?embedded=true",
+        general: "https://docs.google.com/forms/d/e/1FAIpQLSdJ2d8GzdcV_4FZjV4cOAmGSMwyKNMtW2pYnbH9TwPd969zPQ/viewform?embedded=true"
+      };
+
+      // Default form if id missing or unknown
+      var defaultForm = formMap.general || formMap.prayer;
+
+      var params = new URLSearchParams(location.search);
+      var id = (params.get('id') || 'general').toLowerCase();
+      var iframe = document.getElementById('gform');
+      var titleEl = document.getElementById('form-title');
+      if(!iframe) return;
+
+      function titleFor(id){
+        if(id === 'prayer') return 'Prayer Request';
+        if(id === 'testimony') return 'Share a Testimony';
+        if(id === 'bible') return 'Request a Free Bible';
+        return 'Questions, Comments or Connect';
+      }
+
+      function loadForm(name){
+        iframe.src = formMap[name] || defaultForm;
+        if(titleEl) titleEl.textContent = titleFor(name);
+        // update tab active state
+        document.querySelectorAll('.form-tab button').forEach(function(b){
+          var v = (b.getAttribute('data-id')||'').toLowerCase();
+          var active = (v === name);
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-pressed', active);
+        });
+        // update url without reload
+        try{ history.replaceState({},'', location.pathname + '?id=' + encodeURIComponent(name)); }catch(e){}
+      }
+
+      // initialize
+      loadForm(id);
+
+      // wire up tab buttons
+      document.querySelectorAll('.form-tab button').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          var formId = (btn.getAttribute('data-id')||'general').toLowerCase();
+          loadForm(formId);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

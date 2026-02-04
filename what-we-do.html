@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>What We Do — Mercy Flow</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/mercy-flow-fav.png">
+  <link rel="apple-touch-icon" href="images/mercy-flow-fav.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="site-brand">
+        <a href="index.html" class="site-home" aria-label="Home">
+          <img src="images/mercy-flow-fav.png" alt="Mercy Flow logo" class="site-logo">
+        </a>
+            <h1 class="site-title"><a href="index.html">Mercy Flow</a></h1>
+      </div>
+      <button class="mobile-nav-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Open navigation">
+        <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <nav id="main-navigation" class="main-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">What We Believe</a>
+        <a href="what-we-do.html" class="active">What We Do</a>
+        <a href="gospel.html">The Gospel</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap site-main">
+    <section class="about-hero">
+      <h2 class="about-title">✨ What We Do</h2>
+      <p class="about-intro">At Mercy Flow, we don’t just preach the Gospel—we live it out. Our mission is to reach souls, connect them to the Body, baptize them into freedom, and disciple them to walk in their calling.</p>
+    </section>
+
+    <section class="wrap mission">
+      <div class="cards">
+        <article class="card">
+          <h3>Evangelise</h3>
+          <p>We share the Gospel through Spirit-led, Christ-centered outreach — engaging hearts, preaching truth, worshipping God, and inviting people into new life with Jesus.</p>
+          <p class="muted">“The harvest is great, but the workers are few.” – Matthew 9:37</p>
+          <h4>Ministry methods</h4>
+          <ul>
+            <li>Street evangelism</li>
+            <li>Event-based outreach</li>
+            <li>One-on-one Gospel conversations</li>
+            <li>Distribution of tracts and resources</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Connect</h3>
+          <p>We help new believers find a spiritual home by working closely with a network of sound, Bible-teaching churches so those who encounter Jesus are nurtured and grown.</p>
+          <h4>What we do</h4>
+          <ul>
+            <li>Match individuals with local churches</li>
+            <li>Maintain a vetted list of Spirit-filled, Bible-based churches</li>
+            <li>Follow up personally to ensure support</li>
+          </ul>
+          <p><a class="btn" href="https://kingdomconnect.co.uk" target="_blank" rel="noopener">Find a church near you</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Baptise</h3>
+          <p>We lead people into freedom through water baptism — a public declaration of faith and a step into transformation and new life.</p>
+          <h4>Our approach</h4>
+          <ul>
+            <li>Baptism preparation and teaching</li>
+            <li>Hosting regular baptism services</li>
+            <li>Facilitating deliverance and Holy Spirit filling</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Disciple</h3>
+          <p>We walk alongside new believers through mentoring, small groups, and teaching so they discover identity, gifts, and calling.</p>
+          <h4>How we disciple</h4>
+          <ul>
+            <li>One-on-one mentoring</li>
+            <li>Small group discipleship</li>
+            <li>Biblical foundations teaching</li>
+            <li>Identity and calling workshops</li>
+          </ul>
+        </article>
+      <section class="callout" style="margin-top:1.25rem">
+        <h3>Outcome</h3>
+        <p>Mercy Flow exists to be His mercy in motion—not just telling the world about Jesus, but helping people live in His freedom, grow in His Spirit, and carry His message forward.</p>
+        <p>His Mercy Flows Through You.</p>
+        <p>If you want to partner, volunteer, or enquire about events, get in touch.</p>
+        <p><a class="btn" href="contact.html?id=events">Get in touch</a></p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="images/mercy-flow-fav.png" alt="Mercy Flow logo" class="footer-logo">
+        <div class="footer-verse">
+          <strong>Mark 16</strong>
+          <p>15 And then he told them, “Go into all the world and preach the Good News to everyone. 16 Anyone who believes and is baptized will be saved.</p>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">What We Believe</a>
+        <a href="what-we-do.html">What We Do</a>
+        <a href="gospel.html">The Gospel</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-meta">© <span id="year"></span> Mercy Flow</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    (function(){
+      var path = location.pathname.split('/').pop() || 'index.html';
+      var links = document.querySelectorAll('.main-nav a, .footer-nav a');
+      links.forEach(function(a){
+        var href = a.getAttribute('href') || '';
+        var hrefPath = href.split('/').pop();
+        if(hrefPath === path || (hrefPath === '' && (path === '' || path === 'index.html'))){
+          a.classList.add('active');
+          a.setAttribute('aria-current','page');
+        } else {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      var btn = document.querySelector('.mobile-nav-toggle');
+      if(!btn) return;
+      var nav = document.getElementById(btn.getAttribute('aria-controls'));
+      var hamburgerSVG = '<svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
+      var closeSVG = '<svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+      function setButtonState(open){
+        btn.setAttribute('aria-expanded', open);
+        btn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        btn.classList.toggle('open', !!open);
+        btn.innerHTML = open ? closeSVG : hamburgerSVG;
+      }
+
+      // initialize (ensure correct icon)
+      setButtonState(false);
+
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = nav.classList.toggle('open');
+        setButtonState(open);
+      });
+
+      // Close when clicking outside the nav or toggle
+      document.addEventListener('click', function(e){
+        var isClickInsideNav = nav.contains(e.target);
+        var isClickOnBtn = btn.contains(e.target);
+        if(!isClickInsideNav && !isClickOnBtn && nav.classList.contains('open')){
+          nav.classList.remove('open');
+          setButtonState(false);
+        }
+      });
+
+      // Close when selecting a link inside the mobile nav
+      nav.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          if(nav.classList.contains('open')){
+            nav.classList.remove('open');
+            setButtonState(false);
+          }
+        });
+      });
+
+      // If viewport resizes to desktop, ensure menu closed
+      window.addEventListener('resize', function(){
+        if(window.innerWidth > 768 && nav.classList.contains('open')){
+          nav.classList.remove('open');
+          setButtonState(false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
