@@ -126,8 +126,26 @@
   </script>
   <script>
     (function(){
-      function norm(h){ try{ return new URL(h, location.origin).pathname.replace(/\/\/+$/,''); }catch(e){ return (h||'').replace(/\/\/+$/,''); } }
-      var loc = location.pathname.replace(/\/\/+$/,'');
+      // Normalize hrefs and current location to filenames (works with file:// and http://)
+      function norm(h){
+        try{
+          var u = new URL(h, document.baseURI);
+          var p = (u.pathname || '').replace(/\/\/+$/,'');
+          if(p === '' || p === '/') return '';
+          var parts = p.split('/');
+          return parts.pop() || '';
+        }catch(e){
+          var hh = (h||'').replace(/\/\/+$/,'');
+          if(hh === '' || hh === '/') return '';
+          var parts = hh.split('/');
+          return parts.pop() || '';
+        }
+      }
+
+      var loc = (location.pathname || '').replace(/\/\/+$/,'');
+      if(loc === '' || loc === '/') loc = '';
+      else { var parts = loc.split('/'); loc = parts.pop() || ''; }
+
       var links = document.querySelectorAll('.main-nav a, .footer-nav a');
       links.forEach(function(a){
         var href = a.getAttribute('href') || '';
