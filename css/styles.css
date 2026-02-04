@@ -31,6 +31,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 .site-title a{color:var(--link);text-decoration:none;cursor:pointer}
 .site-title a:hover,.site-title a:focus{color:var(--link-hover);text-decoration:none}
 .site-brand{display:flex;align-items:center;gap:.75rem}
+.site-brand{flex:0 1 auto;min-width:0}
 .site-logo{width:84px;height:auto;display:block}
 
 @media (max-width:768px){
@@ -60,6 +61,8 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 /* Mobile menu toggle and mobile nav styles */
 .mobile-nav-toggle{display:none;align-items:center;justify-content:center;background:transparent;border:0;padding:.35rem;border-radius:8px;cursor:pointer}
 .mobile-nav-toggle svg{width:28px;height:28px;display:block}
+
+.mobile-nav-toggle{flex:0 0 auto}
 
 @media(max-width:768px){
   .mobile-nav-toggle{display:inline-flex;margin-left:auto;width:48px;height:48px;padding:.45rem;border-radius:10px;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;z-index:1200}
@@ -133,8 +136,8 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 .footer-nav a{white-space:nowrap}
 
 @media (max-width:640px){
-  .site-footer .wrap{grid-template-columns:1fr;grid-template-areas:"brand" "nav" "meta";align-items:flex-start}
-  .footer-inner{display:block}
+  /* keep header items on a single line where possible; allow wrapping of nav only */
+  .site-header .wrap{flex-wrap:nowrap;align-items:center}
   .footer-brand{align-items:center;justify-content:center}
   .footer-verse{max-width:100%}
   .footer-logo{width:112px}
@@ -147,8 +150,12 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 
 /* Extra small screens: a bit more side padding so text doesn't touch edges */
 @media (max-width:420px){
-  .wrap{padding-left:1.25rem;padding-right:1.25rem}
-  .site-logo{width:56px}
+  .wrap{padding-left:1.5rem;padding-right:1.5rem}
+  .site-logo{width:52px}
+  /* slightly larger mobile type to improve readability */
+  html{font-size:17px}
+  .site-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mobile-nav-toggle{margin-left:auto}
 }
 
 /* Homepage specific footer sizing */
