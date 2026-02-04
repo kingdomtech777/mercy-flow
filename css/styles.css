@@ -21,7 +21,8 @@ html{font-size:18px}
 html,body{overflow-x:hidden}
 
 @media (max-width:640px){
-  html{font-size:16px}
+  /* Slightly larger mobile base type for improved readability */
+  html{font-size:17px}
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
@@ -152,8 +153,8 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 @media (max-width:420px){
   .wrap{padding-left:1.5rem;padding-right:1.5rem}
   .site-logo{width:52px}
-  /* slightly larger mobile type to improve readability */
-  html{font-size:17px}
+  /* Slightly larger mobile base type for very small screens */
+  html{font-size:18px}
   .site-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mobile-nav-toggle{margin-left:auto}
 }
@@ -286,6 +287,15 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 }
 
 /* About page styles */
+.mission-mobile-tweaks{display:none}
+@media (max-width:640px){
+  /* Increase breathing room and line-height for the mission paragraph on phones */
+  .mission{padding-left:1rem;padding-right:1rem}
+  .mission > p{margin-top:0.6rem;margin-bottom:1.2rem;line-height:1.78;font-size:1.1rem}
+  /* Slightly more generous page gutters on mobile */
+  .wrap{padding-left:1.25rem;padding-right:1.25rem}
+}
+
 .about-hero{padding:3rem 0 1rem}
 .about-title{font-size:2.2rem;margin:0 0 1rem;text-align:center;line-height:1.08}
 .about-intro{color:#374151;margin:0 auto 1rem;font-size:1.12rem;width:100%;max-width:900px;text-align:center}
