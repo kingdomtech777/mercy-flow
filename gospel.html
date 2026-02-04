@@ -144,18 +144,15 @@
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script>
     (function(){
-      var path = location.pathname.split('/').pop() || 'index.html';
+      function norm(h){ try{ return new URL(h, location.origin).pathname.replace(/\/\/+$/,''); }catch(e){ return (h||'').replace(/\/\/+$/,''); } }
+      var loc = location.pathname.replace(/\/\/+$/,'');
       var links = document.querySelectorAll('.main-nav a, .footer-nav a');
       links.forEach(function(a){
         var href = a.getAttribute('href') || '';
-        var hrefPath = href.split('/').pop();
-        if(hrefPath === path || (hrefPath === '' && (path === '' || path === 'index.html'))){
-          a.classList.add('active');
-          a.setAttribute('aria-current','page');
-        } else {
-          a.classList.remove('active');
-          a.removeAttribute('aria-current');
-        }
+        var h = norm(href);
+        if((h === '' && (loc === '' || loc === '/')) || h === loc){
+          a.classList.add('active'); a.setAttribute('aria-current','page');
+        } else { a.classList.remove('active'); a.removeAttribute('aria-current'); }
       });
     })();
   </script>
